@@ -7,9 +7,9 @@ import axios from 'axios'
 import { Button, Row, Col, Spinner} from './common'
 import Paper from './Paper'
 
-const urlAvatars = 'https://api.adorable.io/avatars/285/'
+const urlAvatars = 'https://api.adorable.io/avatars/100/'
 function getGif(p){
-  return `https://api.giphy.com/v1/gifs/search?q=${p}+funny+badass&api_key=dc6zaTOxFJmzC`
+  return `https://api.giphy.com/v1/gifs/search?q=${p}+funny+badass+geek&api_key=dc6zaTOxFJmzC&limit=100`
 }
 
 
@@ -20,7 +20,7 @@ class AppComponent extends React.Component {
         this.state = { 
           searching : false,
           hasData: false,
-          members:['Rich', 'Alex', 'Helton', 'Jona'],
+          members:['Rich-Front End Boss', 'Alex', 'Helton-Integration Boss', 'Jona-Integration Boss'],
           member:'',
           quote: '',
           gif: '',
@@ -29,7 +29,8 @@ class AppComponent extends React.Component {
         this.search = this.search.bind(this)
     }
   search(){
-    let index_random = Math.floor((Math.random() * 20) + 1);
+    let index_random = Math.floor((Math.random() * 99) + 1);
+    console.log(index_random)
     this.setState(
       {
         searching:true,
@@ -41,8 +42,8 @@ class AppComponent extends React.Component {
       axios.get(last_gif)
         .then((res)=>{
           this.setState({
-             members:['Rich', 'Alex', 'Helton', 'Jona'],
-              member: "Hermes",
+             members:['Rich-Front End Boss', 'Alex', 'Helton-Integration Boss', 'Jona-Integration Boss'],
+              member: "Hermes-Boss Boss",
               avatar: urlAvatars+"Hermes",
               quote: "I am the boss",
               gif: res.data.data[index_random].images.downsized_large.url,
